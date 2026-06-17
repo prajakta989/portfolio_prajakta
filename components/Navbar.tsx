@@ -26,7 +26,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative flex items-center justify-between rounded-3xl border border-white/10 bg-black/40 px-4 py-4 backdrop-blur-xl lg:px-8 lg:py-4">
+    <nav className=" relative flex items-center justify-between rounded-2xl border border-white/10  px-4 py-2 ba lg:px-8 lg:py-4 z-20">
       {/* Logo */}
       <div className="text-2xl font-extrabold tracking-tight text-white">
         Prajakta<span className="text-blue-500">.</span>
@@ -54,7 +54,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Resume */}
-      <button className="hidden items-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-500 px-8 py-4 font-semibold text-white transition hover:scale-105 lg:flex">
+      <button className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 px-8 py-4 font-semibold text-white transition hover:scale-105 lg:flex">
         <Download size={18} />
         Resume
       </button>

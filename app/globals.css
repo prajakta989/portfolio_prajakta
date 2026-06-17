@@ -49,7 +49,8 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
+  /* --background: oklch(1 0 0);
+  --surface: #0f0f1a;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -59,12 +60,14 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
+  --muted: #7777a0;
+  --muted2: #5555788;
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
+  --accent2: #a78bfa;
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: rgba(255,255,255,0.07);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
@@ -80,7 +83,26 @@
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.708 0 0); */
+  --bg: #080810;
+  /* --surface: #0f0f1a; */
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface2: #16162a;
+  --surface3: #1c1c30;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.14);
+  --text: #fbfbfc;
+  --muted: #fbfbfc;
+  --radius: 0.625rem;
+  --muted2: #555788;
+  --accent: #7c5af0;
+  --accent2: #a78bfa;
+  --accent3: #34d399;
+  --accent-glow: rgba(124, 90, 240, 0.18);
+  --accent-glow2: rgba(52, 211, 153, 0.12);
+  --orange: #f97316;
+  --pink: #ec4899;
+  --cyan: #22d3ee;
 }
 
 .dark {
@@ -97,9 +119,12 @@
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
+  --accent-glow: rgba(124, 90, 240, 0.18);
+  --accent-glow2: rgba(52, 211, 153, 0.12);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
+  --border-hover: rgba(255, 255, 255, 0.14);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.87 0 0);
@@ -115,6 +140,118 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 20%,
+    var(--accent-glow),
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card-glow:hover::after {
+  opacity: 1;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--muted);
+  background: var(--surface2);
+}
+
+/* button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  /* cursor: none; text-decoration: none; */
+  transition: all 0.2s;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+}
+
+.btn-purple {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+}
+.btn-purple:hover {
+  background: #6d4ee0;
+  box-shadow: 0 4px 20px rgba(124, 90, 240, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--border-hover);
+  background: var(--surface2);
+}
+
+.illus-wrap {
+  position: relative;
+  overflow: hidden; /* ← this is the key, hard clips everything */
+  border-radius: 12px; /* match your image corners */
+}
+
+.illus-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;              /* flush with image */
+  border-radius: 0;      /* ← remove 50%, let overflow:hidden handle clipping */
+  background: radial-gradient(
+  ellipse 70% 60% at 50% 40%,  /* ← explicit width/height of the ellipse */
+  rgba(91, 84, 255, 0.35) 0%,
+  rgba(91, 84, 255, 0.15) 35%,
+  transparent 65%
+);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.illus-wrap img {
+  position: relative;
+  z-index: 1;
+  display: block;        /* ← removes inline gap below image */
+  width: 100%;
 }
 
 @layer base {
