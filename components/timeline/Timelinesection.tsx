@@ -7,7 +7,7 @@ const Timelinesection = () => {
   return (
     <section
       id="experience"
-      className="relative flex flex-col  md:mt-2"
+      className="relative flex flex-col py-20 md:py-28"
       style={{ opacity: "1" }}
     >
       <div className="relative z-10 max-w-7xl mx-auto  w-full">

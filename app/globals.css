@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -103,6 +107,7 @@
   --orange: #f97316;
   --pink: #ec4899;
   --cyan: #22d3ee;
+  
 }
 
 .dark {
@@ -233,16 +238,16 @@
 }
 
 .illus-wrap::before {
-  content: '';
+  content: "";
   position: absolute;
-  inset: 0;              /* flush with image */
-  border-radius: 0;      /* ← remove 50%, let overflow:hidden handle clipping */
+  inset: 0; /* flush with image */
+  border-radius: 0; /* ← remove 50%, let overflow:hidden handle clipping */
   background: radial-gradient(
-  ellipse 70% 60% at 50% 40%,  /* ← explicit width/height of the ellipse */
-  rgba(91, 84, 255, 0.35) 0%,
-  rgba(91, 84, 255, 0.15) 35%,
-  transparent 65%
-);
+    ellipse 70% 60% at 50% 40%,
+    /* ← explicit width/height of the ellipse */ rgba(91, 84, 255, 0.35) 0%,
+    rgba(91, 84, 255, 0.15) 35%,
+    transparent 65%
+  );
   pointer-events: none;
   z-index: 0;
 }
@@ -250,9 +255,37 @@
 .illus-wrap img {
   position: relative;
   z-index: 1;
-  display: block;        /* ← removes inline gap below image */
+  display: block; /* ← removes inline gap below image */
   width: 100%;
 }
+
+.projects_heading {
+  background: linear-gradient(
+    to right,
+    #60a5fa,
+    #22d3ee,
+    #38bdf8  
+  );
+  
+  background-clip: text;
+  -webkit-background-clip: text; /* Safari support */
+
+  color: transparent;
+  -webkit-text-fill-color: transparent; /* Safari support */
+}
+
+.projectCard {
+  border-radius: 20px;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  position: relative;
+  overflow: hidden; 
+}
+
+
+
+
 
 @layer base {
   * {

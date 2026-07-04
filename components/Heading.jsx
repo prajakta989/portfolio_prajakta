@@ -1,6 +1,7 @@
-import React from "react";
+"use client"
+import { motion } from "framer-motion";
 
-const Heading = () => {
+const Heading = ({data}) => {
   return (
     <div>
       <div className="relative z-10 max-w-7xl mx-auto  w-full">
@@ -30,7 +31,7 @@ const Heading = () => {
           }}
           className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent uppercase mb-3 tracking-[0.3em]   text-2xl font-bold text-xs md:text-2xl"
         >
-          About Me
+          {data}
         </motion.h1>
       </div>
     </div>

@@ -1,26 +1,9 @@
 "use client";
-import {
-  GraduationCap,
-  FolderOpen,
-  Trophy,
-  Code2,
-  Mail,
-  Download,
-  Icon,
-  Menu,
-  X,
-} from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
-const navItems = [
-  { name: "Education", icon: GraduationCap, active: true },
-  { name: "Projects", icon: FolderOpen },
-  { name: "Experience", icon: Trophy },
-  { name: "Skills", icon: Code2 },
-  { name: "Contact", icon: Mail },
-];
+import { navItems } from "@/data/mockdata";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -40,6 +23,11 @@ const Navbar = () => {
           return (
             <button
               key={item.name}
+              onClick={() =>
+                document
+                  .getElementById(item?.id)
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className={`flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 ${
                 item.active
                   ? "bg-white/10 text-white shadow-lg"
@@ -79,7 +67,12 @@ const Navbar = () => {
               return (
                 <button
                   key={item.name}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-zinc-300 transition bg-white/5 hover:text-white"
+                  onClick={() =>
+                    document
+                      .getElementById(item?.id)
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-zinc-300 transition bg-white/5 hover:text-white cursor-pointer"
                 >
                   <Icon size={18} />
                   <motion.span
