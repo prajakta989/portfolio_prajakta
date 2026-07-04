@@ -13,8 +13,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "portfolio",
-  description: "",
+  title: "Prajakta Naik — Frontend Engineer",
+  description:
+    "Frontend Engineer specializing in React, Next.js and Tailwind CSS. Building modern, responsive and accessible web experiences.",
+  keywords: [
+    "Frontend Engineer",
+    "React Developer",
+    "Next.js",
+    "Tailwind CSS",
+    "Portfolio",
+  ],
+  authors: [{ name: "Prajakta Naik" }],
+  openGraph: {
+    title: "Prajakta Naik — Frontend Engineer",
+    description:
+      "Frontend Engineer specializing in React, Next.js and Tailwind CSS. Building modern, responsive and accessible web experiences.",
+    url: "https://prajaktanaik.vercel.app",
+    siteName: "Prajakta Naik",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prajakta Naik — Frontend Engineer",
+    description:
+      "Frontend Engineer specializing in React, Next.js and Tailwind CSS. Building modern, responsive and accessible web experiences.",
+  },
+  metadataBase: new URL("https://prajaktanaik.vercel.app"),
 };
 
 export default function RootLayout({
@@ -28,11 +52,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col dark">
-        <main className="px-6 md:px-12 lg:px-28 py-6">
-          {children}
-        </main>
-        
-        </body>
+        <main className="px-6 md:px-12 lg:px-28 py-6">{children}</main>
+      </body>
     </html>
   );
 }
